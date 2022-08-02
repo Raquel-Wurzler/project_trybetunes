@@ -69,7 +69,6 @@ class Search extends Component {
         <p>{ alb.artistName }</p>
       </div>
     ));
-    console.log(mapInAlbuns);
 
     const foundAlbum = <h3>{`Resultado de álbuns de: ${artistName}`}</h3>;
     const compareIfAlbun = albuns.length === 0 ? notAlbunSearch : mapInAlbuns;
