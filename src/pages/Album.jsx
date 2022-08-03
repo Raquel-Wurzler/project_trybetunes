@@ -1,40 +1,54 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
+import MusicCard from '../components/MusicCard';
 
 class Album extends Component {
   state = {
+    loading: true,
     musics: [],
-  }
+    artistName: '',
+    albunName: '',
+  };
 
-  componentDidMount() {
-    this.createListMusic();
-  }
-
-  createListMusic = async () => {
+  async componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    const resultFunc = await getMusics(id);
-    this.setState({ musics: [...resultFunc] });
+    this.setState({ loading: true }, async () => {
+      const resultFunc = await getMusics(id);
+      const { artistName, collectionName } = resultFunc[0];
+      this.setState({
+        musics: [...resultFunc],
+        artistName,
+        albunName: collectionName,
+        loading: false,
+      });
+    });
   }
 
   render() {
-    const { musics } = this.state;
+    const { musics, artistName, albunName } = this.state;
     console.log(musics);
-    console.log('test');
+
     return (
       <div data-testid="page-album">
         <Header />
-        Album
-        <p>{musics}</p>
+        <h1 data-testid="artist-name">{ artistName }</h1>
+        <h2 data-testid="album-name">{ albunName }</h2>
+        <div>
+          <MusicCard musics={ musics } />
+        </div>
       </div>
     );
   }
 }
 
 // Album.prototype = {
-//   match: PropTypes.shape({ params: PropTypes.shape({ id: PropTypes.string.isRequired }) })
-//     .isRequired,
+//   artistName: PropTypes.string.isRequired,
 // };
+Album.propTypes = {
+  match: PropTypes.shape({ params: PropTypes.shape({ id: PropTypes.string.isRequired }) })
+    .isRequired,
+};
 
 export default Album;

@@ -76,6 +76,7 @@ class Search extends Component {
     return (
       <div data-testid="page-search">
         <Header />
+        <h1>Search</h1>
         <span>
           { form }
         </span>
