@@ -29,7 +29,6 @@ class Album extends Component {
 
   render() {
     const { musics, artistName, albunName, loading } = this.state;
-    const cardMusic = <MusicCard musics={ musics } />;
     return (
       <div data-testid="page-album">
         <Header />
@@ -37,7 +36,7 @@ class Album extends Component {
         <h2 data-testid="album-name">{ albunName }</h2>
         <div>
           {
-            loading ? <Loading /> : cardMusic
+            loading ? <Loading /> : <MusicCard musics={ musics } />
           }
         </div>
       </div>
