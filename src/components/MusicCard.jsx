@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import addSong from '../services/favoriteSongsAPI';
+import { addSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends Component {
@@ -9,16 +9,17 @@ class MusicCard extends Component {
     favoriteMusic: [],
   }
 
-  checkedClick = async (event, music) => {
+  checkedClick = async (event, musicArray) => {
     const { checked } = event.target;
     if (checked) {
       this.setState({
         loading: true,
       }, async () => {
-        await addSong(music);
+        await addSong(musicArray);
+        // console.log(funcAddSong);
         return this.setState((prevState) => ({
           loading: false,
-          favoriteMusic: [...prevState.favoriteMusic, music],
+          favoriteMusic: [...prevState.favoriteMusic, musicArray],
         }));
       });
     }
@@ -30,6 +31,8 @@ class MusicCard extends Component {
     const mapMusics = musics.filter((music) => music.kind === 'song').map((music, i) => {
       const isChecked = favoriteMusic.some((musiFav) => (
         musiFav.trackId === music.trackId));
+      // console.log(musics);
+      // console.log(favoriteMusic);
       return (
         <li key={ i }>
           <h3>{music.trackName}</h3>
@@ -45,6 +48,7 @@ class MusicCard extends Component {
               name="musicFavorite"
               id="favorite"
               data-testid={ `checkbox-music-${music.trackId}` }
+              musics={ musics }
               checked={ isChecked }
               onChange={ (event) => this.checkedClick(event, music) }
             />
