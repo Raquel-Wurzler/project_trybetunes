@@ -1,23 +1,61 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import addSong from '../services/favoriteSongsAPI';
+import Loading from './Loading';
 
 class MusicCard extends Component {
+  state = {
+    loading: false,
+    favoriteMusic: [],
+  }
+
+  checkedClick = async (event, music) => {
+    const { checked } = event.target;
+    if (checked) {
+      this.setState({
+        loading: true,
+      }, async () => {
+        await addSong(music);
+        return this.setState((prevState) => ({
+          loading: false,
+          favoriteMusic: [...prevState.favoriteMusic, music],
+        }));
+      });
+    }
+  }
+
   render() {
     const { musics } = this.props;
-    const mapMusics = musics.filter((music) => music.kind === 'song').map((music, i) => (
-      <li key={ i }>
-        <h3>{music.trackName}</h3>
-        <audio data-testid="audio-component" src={ music.previewUrl } controls>
-          <track kind="captions" />
-          <code>audio</code>
-          .
-        </audio>
-      </li>
-    ));
+    const { loading, favoriteMusic } = this.state;
+    const mapMusics = musics.filter((music) => music.kind === 'song').map((music, i) => {
+      const isChecked = favoriteMusic.some((musiFav) => (
+        musiFav.trackId === music.trackId));
+      return (
+        <li key={ i }>
+          <h3>{music.trackName}</h3>
+          <audio data-testid="audio-component" src={ music.previewUrl } controls>
+            <track kind="captions" />
+            <code>audio</code>
+            .
+          </audio>
+          <label htmlFor="favorite">
+            Favorita
+            <input
+              type="checkbox"
+              name="musicFavorite"
+              id="favorite"
+              data-testid={ `checkbox-music-${music.trackId}` }
+              checked={ isChecked }
+              onChange={ (event) => this.checkedClick(event, music) }
+            />
+          </label>
+        </li>
+      );
+    });
     return (
       <ul>
         {
-          mapMusics
+          loading ? <Loading /> : mapMusics
         }
       </ul>
     );

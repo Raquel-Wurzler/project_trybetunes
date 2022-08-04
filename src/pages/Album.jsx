@@ -11,6 +11,7 @@ class Album extends Component {
     musics: [],
     artistName: '',
     albunName: '',
+    musicFavorite: [],
   };
 
   async componentDidMount() {
@@ -28,7 +29,7 @@ class Album extends Component {
   }
 
   render() {
-    const { musics, artistName, albunName, loading } = this.state;
+    const { musics, artistName, albunName, loading, musicFavorite } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -36,7 +37,8 @@ class Album extends Component {
         <h2 data-testid="album-name">{ albunName }</h2>
         <div>
           {
-            loading ? <Loading /> : <MusicCard musics={ musics } />
+            loading ? <Loading />
+              : <MusicCard musics={ musics } musicFavorite={ musicFavorite } />
           }
         </div>
       </div>
