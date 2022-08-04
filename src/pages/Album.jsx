@@ -15,6 +15,10 @@ class Album extends Component {
   };
 
   async componentDidMount() {
+    await this.createListMusic();
+  }
+
+  createListMusic = async () => {
     const { match: { params: { id } } } = this.props;
     this.setState({ loading: true }, async () => {
       const resultFunc = await getMusics(id);

@@ -16,7 +16,6 @@ class MusicCard extends Component {
         loading: true,
       }, async () => {
         await addSong(musicArray);
-        // console.log(funcAddSong);
         return this.setState((prevState) => ({
           loading: false,
           favoriteMusic: [...prevState.favoriteMusic, musicArray],
