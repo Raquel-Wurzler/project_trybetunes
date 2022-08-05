@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
 import Loading from '../components/Loading';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   state = {
@@ -11,11 +12,12 @@ class Album extends Component {
     musics: [],
     artistName: '',
     albunName: '',
-    musicFavorite: [],
+    songsFavorites: [],
   };
 
   async componentDidMount() {
     await this.createListMusic();
+    await this.recoverFavoriteMusic();
   }
 
   createListMusic = async () => {
@@ -32,8 +34,19 @@ class Album extends Component {
     });
   }
 
+  recoverFavoriteMusic = async () => {
+    this.setState({ loading: true }, async () => {
+      const recover = await getFavoriteSongs();
+      console.log('recover', recover);
+      this.setState({
+        songsFavorites: [...recover],
+        loading: false,
+      });
+    });
+  }
+
   render() {
-    const { musics, artistName, albunName, loading, musicFavorite } = this.state;
+    const { musics, artistName, albunName, loading, songsFavorites } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -42,7 +55,7 @@ class Album extends Component {
         <div>
           {
             loading ? <Loading />
-              : <MusicCard musics={ musics } musicFavorite={ musicFavorite } />
+              : <MusicCard musics={ musics } songsFavorites={ songsFavorites } />
           }
         </div>
       </div>

@@ -9,16 +9,16 @@ class MusicCard extends Component {
     favoriteMusic: [],
   }
 
-  checkedClick = async (event, musicArray) => {
+  checkedClick = async (event, musicObj) => {
     const { checked } = event.target;
     if (checked) {
       this.setState({
         loading: true,
       }, async () => {
-        await addSong(musicArray);
+        await addSong(musicObj);
         return this.setState((prevState) => ({
           loading: false,
-          favoriteMusic: [...prevState.favoriteMusic, musicArray],
+          favoriteMusic: [...prevState.favoriteMusic, musicObj],
         }));
       });
     }
@@ -27,10 +27,11 @@ class MusicCard extends Component {
   render() {
     const { musics } = this.props;
     const { loading, favoriteMusic } = this.state;
+    console.log('card', favoriteMusic);
     const mapMusics = musics.filter((music) => music.kind === 'song').map((music, i) => {
       const isChecked = favoriteMusic.some((musiFav) => (
         musiFav.trackId === music.trackId));
-      // console.log(musics);
+      console.log('array', music);
       // console.log(favoriteMusic);
       return (
         <li key={ i }>
