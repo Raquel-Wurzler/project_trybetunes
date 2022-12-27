@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import '../css/login.css';
 
 const NAME_LENGTH = 3;
 
@@ -36,28 +37,36 @@ class Login extends Component {
     const { btnDisabled, loading } = this.state;
 
     const form = (
-      <form>
-        <input
-          type="text"
-          name="nameInput"
-          id="name"
-          data-testid="login-name-input"
-          onChange={ this.loginChange }
-        />
-        <button
-          type="button"
-          data-testid="login-submit-button"
-          disabled={ btnDisabled }
-          onClick={ this.btnSaveOnClick }
-        >
-          Entrar
-        </button>
-      </form>
+      <div className="backgroud-login">
+        <section className="box">
+          <h1 className="title is-1 is-spaced">Login</h1>
+          <form>
+            <input
+              type="text"
+              name="nameInput"
+              id="name"
+              data-testid="login-name-input"
+              onChange={ this.loginChange }
+              className="input is-danger"
+              placeholder="Escreva seu nome aqui"
+            />
+            <br />
+            <button
+              type="button"
+              data-testid="login-submit-button"
+              disabled={ btnDisabled }
+              onClick={ this.btnSaveOnClick }
+              className="button is-danger"
+            >
+              Entrar
+            </button>
+          </form>
+        </section>
+      </div>
     );
 
     return (
       <div data-testid="page-login">
-        <h1>Login</h1>
         {
           loading ? <Loading /> : form
         }

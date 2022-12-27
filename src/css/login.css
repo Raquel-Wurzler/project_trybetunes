@@ -1,0 +1,24 @@
+.backgroud-login {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.title {
+  color: red;
+}
+
+.box {
+  width: 50%;
+  background-image: url('../../public/cat-piano.gif');
+  background-size: 35%;
+  background-repeat: no-repeat;
+  background-position: right top;
+  box-shadow: 5px 5px 10px red;
+}
+
+.button {
+  margin-top: 30px;
+}
