@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 import Loading from './Loading';
 
@@ -31,10 +31,21 @@ class MusicCard extends Component {
         loading: true,
       }, async () => {
         await addSong(musicObj);
-        console.log(musicObj);
         return this.setState((prevState) => ({
           loading: false,
           favoriteMusic: [...prevState.favoriteMusic, musicObj],
+        }));
+      });
+    } else {
+      this.setState({
+        loading: true,
+      }, async () => {
+        await removeSong(musicObj);
+        return this.setState((prevState) => ({
+          loading: false,
+          favoriteMusic: prevState.favoriteMusic.filter(
+            (item) => item.trackId !== musicObj.trackId,
+          ),
         }));
       });
     }

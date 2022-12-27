@@ -34,7 +34,6 @@ class Search extends Component {
 
   render() {
     const { bandName, loading, albuns, artistName } = this.state;
-    const buttonDis = bandName.length < BAND_NAME_LENGTH;
     const form = (
       <form>
         <input
@@ -47,7 +46,7 @@ class Search extends Component {
         <button
           type="button"
           data-testid="search-artist-button"
-          disabled={ buttonDis }
+          disabled={ bandName.length < BAND_NAME_LENGTH }
           onClick={ this.btnClickClearAndRequest }
         >
           Pesquisar
