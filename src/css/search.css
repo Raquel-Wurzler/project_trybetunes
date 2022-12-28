@@ -1,0 +1,53 @@
+.search {
+  height: 100%;
+  background-color: rgba(238, 199, 170, 0.5);
+  padding: 20px;
+  padding-bottom: 280px;
+}
+
+.input-search {
+  width: 50%;
+}
+
+.form-search {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-search {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.card-album {
+  border: 1px solid rgba(209, 0, 0, 0.881);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px red;
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  height: 320px;
+  padding-top: 5px;
+  margin: 15px;
+  align-items: center;
+}
+
+.notAlbum {
+  font-size: 30px;
+}
+
+.img-search {
+  width: 160px;
+  box-shadow: 3px 3px 7px rgb(58, 58, 58);
+  margin-bottom: 5px;
+}
+
+.list-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.art-name {
+  font-weight: 900;
+}

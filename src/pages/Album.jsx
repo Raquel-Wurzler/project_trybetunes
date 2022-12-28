@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
 import Loading from '../components/Loading';
+import '../css/titlePage.css';
+import '../css/album.css';
 
 class Album extends Component {
   state = {
@@ -36,14 +38,21 @@ class Album extends Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <h1 data-testid="artist-name">{ artistName }</h1>
-        <h2 data-testid="album-name">{ albunName }</h2>
-        <div>
-          {
-            loading ? <Loading />
-              : <MusicCard musics={ musics } />
-          }
-        </div>
+        <section className="album">
+          <h1 data-testid="album-name" className="title-page">
+            { `Detalhes do Álbum: ${albunName}` }
+          </h1>
+          <p data-testid="artist-name" className="art-name-album">
+            { `Artista Pesquisado: ${artistName}` }
+          </p>
+          <div className="albuns">
+            {
+              loading ? <Loading />
+                : <MusicCard musics={ musics } />
+            }
+          </div>
+        </section>
+
       </div>
     );
   }

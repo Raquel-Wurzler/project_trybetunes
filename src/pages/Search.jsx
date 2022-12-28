@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import '../css/titlePage.css';
+import '../css/search.css';
 
 const BAND_NAME_LENGTH = 2;
 
@@ -35,37 +37,39 @@ class Search extends Component {
   render() {
     const { bandName, loading, albuns, artistName } = this.state;
     const form = (
-      <form>
+      <form className="form-search">
         <input
           type="text"
           name="bandName"
           value={ bandName }
           data-testid="search-artist-input"
           onChange={ this.bandNameChange }
+          className="input is-danger is-medium input-search"
         />
         <button
           type="button"
           data-testid="search-artist-button"
           disabled={ bandName.length < BAND_NAME_LENGTH }
           onClick={ this.btnClickClearAndRequest }
+          className="button is-dark is-medium button-search"
         >
           Pesquisar
         </button>
       </form>
     );
 
-    const notAlbunSearch = <h3>Nenhum álbum foi encontrado</h3>;
+    const notAlbunSearch = <h3 className="notAlbum">Nenhum álbum foi encontrado</h3>;
     const mapInAlbuns = albuns.map((alb, i) => (
-      <div key={ i }>
-        <img src={ alb.artworkUrl100 } alt={ alb.artistName } />
+      <div key={ i } className="card-album">
+        <img src={ alb.artworkUrl100 } alt={ alb.artistName } className="img-search" />
+        <p className="art-name">{ alb.artistName }</p>
+        <p>{ alb.collectionName }</p>
         <Link
           to={ `/album/${alb.collectionId}` }
           data-testid={ `link-to-album-${alb.collectionId}` }
         >
           Detalhes Álbum
         </Link>
-        <p>{ alb.collectionName }</p>
-        <p>{ alb.artistName }</p>
       </div>
     ));
 
@@ -75,20 +79,22 @@ class Search extends Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <h1>Search</h1>
-        <span>
-          { form }
-        </span>
-        <span>
-          {
-            !loading && foundAlbum
-          }
-        </span>
-        <span>
-          {
-            loading ? <Loading /> : compareIfAlbun
-          }
-        </span>
+        <div className="search">
+          <h1 className="title-page">Search</h1>
+          <span>
+            { form }
+          </span>
+          <span>
+            {
+              loading && foundAlbum
+            }
+          </span>
+          <span className="list-card">
+            {
+              loading ? <Loading /> : compareIfAlbun
+            }
+          </span>
+        </div>
       </div>
     );
   }

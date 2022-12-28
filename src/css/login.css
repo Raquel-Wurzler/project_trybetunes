@@ -4,10 +4,38 @@
   height: 100vh;
   justify-content: center;
   background-color: rgba(255, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
 }
 
-.title {
+.Title {
+  color:red;
+  font-size: 100px;
+  font-family: monospace;
+  border-right: 4px solid;
+  width: 10ch;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s steps(10),
+  blinking 0.5s infinite step-end alternate;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blinking {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.title2 {
   color: red;
+  font-size: 50px;
+  font-family: monospace;
 }
 
 .box {

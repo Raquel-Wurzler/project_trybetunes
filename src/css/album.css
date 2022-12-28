@@ -1,0 +1,13 @@
+.album {
+  height: 100%;
+  background-color: rgba(255, 244, 199, 0.899);
+  padding: 20px;
+  padding-bottom: 280px;
+}
+
+.art-name-album {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  color: midnightblue;
+  font-weight: 700;
+}

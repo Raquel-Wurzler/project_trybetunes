@@ -1,0 +1,22 @@
+.li-music-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: rgba(242, 114, 114, 0.514);
+  box-shadow: 5px 5px 10px red;
+  cursor: pointer;
+}
+
+.trackname {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+audio {
+  margin: 5px;
+}

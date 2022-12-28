@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import { getUser, updateUser } from '../services/userAPI';
+import '../css/titlePage.css';
+import '../css/profileEdit.css';
 
 class ProfileEdit extends Component {
   state = {
@@ -70,6 +72,7 @@ class ProfileEdit extends Component {
             id="name"
             onChange={ (e) => this.handleChange(e) }
             data-testid="edit-input-name"
+            className="input is-danger"
           />
         </label>
         <br />
@@ -83,6 +86,7 @@ class ProfileEdit extends Component {
             id="email"
             onChange={ (e) => this.handleChange(e) }
             data-testid="edit-input-email"
+            className="input is-danger"
           />
         </label>
         <br />
@@ -96,6 +100,7 @@ class ProfileEdit extends Component {
             id="description"
             onChange={ (e) => this.handleChange(e) }
             data-testid="edit-input-description"
+            className="input is-danger"
           />
         </label>
         <br />
@@ -109,6 +114,7 @@ class ProfileEdit extends Component {
             id="image"
             onChange={ (e) => this.handleChange(e) }
             data-testid="edit-input-image"
+            className="input is-danger"
           />
         </label>
         <br />
@@ -117,6 +123,7 @@ class ProfileEdit extends Component {
           data-testid="edit-button-save"
           disabled={ btnDisabled }
           onClick={ this.newInfosUser }
+          className="button is-info"
         >
           Salvar
         </button>
@@ -125,13 +132,14 @@ class ProfileEdit extends Component {
     return (
       <div data-testid="page-profile-edit">
         <Header />
-        Editar Perfil
-
-        <span>
-          {
-            loading ? <Loading /> : formUser
-          }
-        </span>
+        <div className="profileEdit">
+          <h1 className="title-page">Editar Perfil</h1>
+          <span className="form-profileEdit">
+            {
+              loading ? <Loading /> : formUser
+            }
+          </span>
+        </div>
       </div>
     );
   }

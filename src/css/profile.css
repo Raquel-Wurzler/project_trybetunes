@@ -1,0 +1,38 @@
+.profile {
+  height: 100%;
+  background-color: rgba(194, 238, 170, 0.5);
+  padding: 20px;
+  padding-bottom: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 60px;
+}
+
+.btn-profile {
+  color: red;
+  border: 2px solid red;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.infos-user {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.h1-profile {
+  font-weight: 700;
+  margin-right: 15px;
+}
+
+.nome {
+  display: flex;
+}
+
+.img-profile {
+  width: 300px;
+  height: 300px;
+  border-radius: 10%;
+}

@@ -38,8 +38,9 @@ class Login extends Component {
 
     const form = (
       <div className="backgroud-login">
+        <h1 className="Title">Trybetunes</h1>
         <section className="box">
-          <h1 className="title is-1 is-spaced">Login</h1>
+          <h1 className="title2">Login</h1>
           <form>
             <input
               type="text"
