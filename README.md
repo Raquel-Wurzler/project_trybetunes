@@ -12,19 +12,19 @@ _"A Trybe é uma escola do futuro para qualquer pessoa que queira melhorar de vi
 ### O que foi entregue:
 <details>
   <summary>🤓</summary>
-  <img height="450em" width="800px" src="./public/ImagemTela.png"/>
+  <img height="450em" width="800px" src="./public/ImagemDaTela.png"/>
   <br />
   
-  <img height="450em" width="800px" src="./public/ImagemTela2.png"/>
+  <img height="450em" width="800px" src="./public/ImagemDaTela2.png"/>
   <br />
   
-  <img height="450em" width="800px" src="./public/ImagemTela3.png"/>
+  <img height="450em" width="800px" src="./public/ImagemDaTela3.png"/>
   <br />
   
-  <img height="450em" width="800px" src="./public/ImagemTela4.png"/>
+  <img height="450em" width="800px" src="./public/ImagemDaTela4.png"/>
   <br />
   
-  <img height="450em" width="800px" src="./public/ImagemTela5.png"/>
+  <img height="450em" width="800px" src="./public/ImagemDaTela5.png"/>
   <br />
 </details>
 
