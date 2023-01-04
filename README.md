@@ -32,7 +32,7 @@ _"A Trybe é uma escola do futuro para qualquer pessoa que queira melhorar de vi
 * Projeto feito em React Router;
 * As informações referentes aos artistas, álbuns e músicas vem da API do iTunes que disponibiliza um trecho de 29 segundos de cada música;
 * Todo componentizado em arquivos jsx;
-* Contém as seguintes páginas: Login (para fazer login do usuário), Search (para pesquisar os artistas, Album (pra vizualizar as músicas de cada álbum, Favorites (vizualizar as músicas favoritadas, Profile (com os dados do usuário), ProfileEdit (para editar as informações do perfil);
+* Contém as seguintes páginas: Login (para fazer login do usuário), Search (para pesquisar os artistas), Album (pra vizualizar as músicas de cada álbum), Favorites (vizualizar as músicas favoritadas), Profile (com os dados do usuário), ProfileEdit (para editar as informações do perfil);
 * Nessa aplicação é possível fazer login do usuário, pesquisar por artistas, vizualizar vários álbuns do artista pesquisado, vizualizar várias músicas de cada álbum, escutar trechos de 29 segundos de cada música, favoritar músicas, vizualizar os dados do perfil, editar dados do perfil;
 * Usado o framework Bulma para auxiliar na estilização;
 
